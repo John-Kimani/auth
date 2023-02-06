@@ -1,18 +1,20 @@
-import { applyMiddleware, combineReducers, legacy_createStore } from "redux";
-import  thunk  from "redux-thunk";
-import { authenticationRequestReducer } from "./src/reducers/authenticationReducers";
-import { composeWithDevTools } from "@reduxjs/toolkit/dist/devtoolsExtension";
+import { createStore, applyMiddleware } from "redux";
+import thunk from "redux-thunk";
 
-const reducer = combineReducers({
-    authenticationRequest: authenticationRequestReducer,
+interface Action {
+  type: string;
+  payload: any;
+}
 
-})
+const initialState = {};
 
-const intialState = {
-
+const reducer = (state = initialState, action: Action) => {
+  switch (action.type) {
+    default:
+      return state;
+  }
 };
 
-
-const store = legacy_createStore(reducer, intialState, applyMiddleware(thunk));
+const store = createStore(reducer, applyMiddleware(thunk));
 
 export default store;

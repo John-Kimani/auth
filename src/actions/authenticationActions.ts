@@ -1,5 +1,11 @@
-import { LOGIN_USER_FAIL, LOGIN_USER_REQUEST, LOGIN_USER_SUCCESS } from "../constants/authenticationConstants";
+import { Dispatch } from "redux";
+import endpoint from "../../src/api/index";
 
-export const authenticationAPI = () => {
-    
+export const fetchLoginRequest = () => async (dispatch: Dispatch) => {
+  try {
+    const response = await endpoint.get("/data");
+    dispatch({ type: "FETCH_DATA_SUCCESS", payload: response.data });
+  } catch (error) {
+    dispatch({ type: "FETCH_DATA_ERROR", payload: error });
+  }
 };
